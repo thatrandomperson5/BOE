@@ -1,4 +1,3 @@
-#from intenc import encode
 import intenc
 
 test = [1, 3, 5, 8]
