@@ -1,8 +1,13 @@
+## Bit precision int/number encoding
+    
 import std/[strutils, sequtils, parseutils]
 import utils
 
 
 proc encode*(s: openArray[int]): seq[byte] =
+    ## Encode and smash an array of ints into bytes.
+    ## The first byte will be the bit length
+
     var mlength = 0
     for i in s:
         if i > mlength:
@@ -24,6 +29,7 @@ proc encode*(s: openArray[int]): seq[byte] =
         result.add bnum
 
 proc encode*(s: openArray[int], lo: var int): seq[byte] =
+    ## Same as `encode proc <#encode,openArray[int]>`_ execpt the bit length is stored in `lo`.
     var mlength = 0
     for i in s:
         if i > mlength:
@@ -45,6 +51,7 @@ proc encode*(s: openArray[int], lo: var int): seq[byte] =
          result.add bnum
 
 proc decode*(i: openArray[byte], l = 0): seq[int] = 
+    ## Decode and de-smash an array of bytes into a int seq
     var ri = i.toSeq
     var rl: int
     if l == 0:

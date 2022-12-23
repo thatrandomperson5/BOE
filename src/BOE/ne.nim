@@ -1,7 +1,12 @@
+## Byte precision int/number encoding
+    
 import std/[math, strutils, sequtils, parseutils]
 import utils
     
 proc encode*(s: openArray[int]): seq[byte] = 
+    ## Encode an array of integers into an seq of bytes.
+    ## The byte length is stored as the first byte in the seq.
+    
     var mlength = 0
     for i in s:
         if i > mlength:
@@ -20,6 +25,8 @@ proc encode*(s: openArray[int]): seq[byte] =
 
 
 proc encode*(s: openArray[int], lo: var int): seq[byte] = 
+    ## Same as `encode proc <#encode,openArray[int]>`_ execpt the byte length is stored in `lo`.
+    
     var mlength = 0
     for i in s:
         if i > mlength:
@@ -37,6 +44,8 @@ proc encode*(s: openArray[int], lo: var int): seq[byte] =
             result.add tmp
 
 proc decode*(i: openArray[byte], l = 0): seq[int] = 
+    ## Decode an encoded int seq from an array of bytes.
+   
     var ri = i.toSeq
     var rl: int
     if l == 0:
