@@ -1,3 +1,1 @@
-nim doc --git.url:https://github.com/thatrandomperson5/BOE --outdir:htmldocs ./src/BOE/ne.nim
-
-nim doc --git.url:https://github.com/thatrandomperson5/BOE --outdir:htmldocs ./src/BOE/bpe.nim
+nim doc --project --git.url:https://github.com/thatrandomperson5/BOE --git.commit:main --outdir:htmldocs ./src/BOE.nim
