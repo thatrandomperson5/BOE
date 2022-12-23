@@ -1,0 +1,8 @@
+**/*.replit
+**/replit.nix
+**/*.breakpoints
+venv/
+.config/
+**/__pycache__
+**/.mypy_cache
+**/*.pyc
