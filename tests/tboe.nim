@@ -28,4 +28,3 @@ test "can encode(bpe)": # Bit precision number encoding
     echo "Width: ", o2[0]
     check bpe.decode(o2) == test
   
-echo "Tests done"
