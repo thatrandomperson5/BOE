@@ -30,6 +30,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: setup nim
+        uses: jiro4989/setup-nim-action@v1
+        with:
+          nim-version: '1.6.0'
+      - name: gen docs
+        run: sh docs.sh
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
