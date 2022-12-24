@@ -8,12 +8,5 @@ setup(
     author='thatrandomperson5',
     url='https://github.com/thatrandomperson5/BOE',
     packages=['intenc'],
-    package_data={'': ['*.nim*']}, 
-    setup_requires = [
-        "choosenim_install",
-    ],
-    install_requires=[
-        'nimporter',                
-    ],
     ext_modules=nimporter.build_nim_extensions(danger=True)
 )
