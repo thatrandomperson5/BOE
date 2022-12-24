@@ -20,7 +20,7 @@ class EncodedBytes:
     data: bytes
     length: int
     etype: str
-    def decode(self: EncodedBytes) -> List[int]:
+    def decode(self) -> List[int]:
         ensureType(self.data, bytes)
         ensureType(self.length, int)
         if self.etype == "bpe":
@@ -31,7 +31,7 @@ class EncodedBytes:
             raise IntecKindError(f"Unrecognized encoding type \"{etype}\"")
     
 
-def encode(ints: List[int], etype: str) -> EncodedBytes:
+def encode(ints: List[int], etype: str = "ne") -> EncodedBytes:
     ensureType(ints, list)
     for i in ints:
         
@@ -44,7 +44,7 @@ def encode(ints: List[int], etype: str) -> EncodedBytes:
     else:
         raise IntecKindError(f"Unrecognized encoding type \"{etype}\"")
         
-def decode(data: bytes, length: int, etype: str) -> list:
+def decode(data: bytes, length: int, etype: str = "ne") -> list:
     obj = EncodedBytes(data, length, etype)
     return obj.decode()
 
