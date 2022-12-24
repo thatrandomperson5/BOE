@@ -64,7 +64,8 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
           python setup.py bdist_wheel
-          twine upload dist/*
+          dir dist
+          twine upload ./dist/*
 
   # ----------------------------------------------------------------------------
   build-macos:
