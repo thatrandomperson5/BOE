@@ -35,7 +35,8 @@
 ##   
 ## ..
 ## 
-## tmp
+## **Note**: Never import intenc directly, always choose a path (`/ne`, `/bpe`) or use the method used above.
+## 
 
 
 from intenc/ne import nil
