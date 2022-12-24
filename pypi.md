@@ -1,5 +1,6 @@
 # Intenc
-Example:
+A integer encoding library.
+## Example
 ```py
 import intenc
 import random
