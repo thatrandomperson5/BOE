@@ -12,7 +12,7 @@ The output structure contains a length and data. The length determines how much 
 Really simple, choose a route and import it (`import intenc/ne`, `import intenc/bpe`). Use the proc `encode` to turn a array of ints into bytes. Use proc `decode` to turn encoded bytes back. Look at the docs for more info.
 ## Installation
 ```
-nimble install https://thatrandomperson5.github.io/intenc
+nimble install https://github.com/thatrandomperson5/intenc
 ```
 ## [Docs](https://thatrandomperson5.github.io/intenc/intenc.html)
 
@@ -20,7 +20,7 @@ nimble install https://thatrandomperson5.github.io/intenc
 Run `encode(data)` to encode your data. If you want to use `"bpe"` supply that as the second argument. `encode` returns an EncodedBytes. You can decode that object using `.decode()`.
 ## Installation
 ```
-pip install git+https://thatrandomperson5.github.io/intenc.git
+pip install git+https://github.com/thatrandomperson5/intenc.git
 ```
 ## Docs
 ### `class EncodeBytes(data, length, etype)`
