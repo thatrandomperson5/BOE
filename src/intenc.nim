@@ -1,7 +1,7 @@
 # This file is only for docs! do not import directly
 
 ## The intenc docs
-## ============
+## ================
 ## - `ne<./intenc/ne>`_ number/int encoding
 ## - `bpe<./intenc/bpe>`_ bit precision number/int encoding
 ## Example
@@ -38,6 +38,6 @@
 ## tmp
 
 
-from BOE/ne import nil
-from BOE/bpe import nil
+from intenc/ne import nil
+from intenc/bpe import nil
 
