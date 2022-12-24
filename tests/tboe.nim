@@ -1,8 +1,8 @@
 
 import unittest
 
-from BOE/ne import nil
-from BOE/bpe import nil
+from intenc/ne import nil
+from intenc/bpe import nil
 import random
 proc toString(bytes: openarray[byte]): string =
     result = newString(bytes.len)

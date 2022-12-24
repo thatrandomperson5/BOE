@@ -1,5 +1,5 @@
-from encoders/ne import nil
-from encoders/bpe import nil
+from intenc/ne import nil
+from intenc/bpe import nil
 import nimpy
 
 proc bpeEncode*(a: openarray[int]): (seq[byte], int) {.exportpy.} = 

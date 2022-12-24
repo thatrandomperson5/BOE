@@ -1,15 +1,15 @@
 # This file is only for docs! do not import directly
 
-## The BOE docs
+## The intenc docs
 ## ============
-## - `ne<./BOE/ne>`_ number/int encoding
-## - `bpe<./BOE/bpe>`_ bit precision number/int encoding
+## - `ne<./intenc/ne>`_ number/int encoding
+## - `bpe<./intenc/bpe>`_ bit precision number/int encoding
 ## Example
 ## =======
 ## .. code:: nim
 ## 
-##   from BOE/ne import nil
-##   from BOE/bpe import nil
+##   from intenc/ne import nil
+##   from intenc/bpe import nil
 ##   import random
 ##   proc toString(bytes: openarray[byte]): string =
 ##     result = newString(bytes.len)
