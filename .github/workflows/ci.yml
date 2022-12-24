@@ -2,22 +2,23 @@ name: CI
 on:
   release:
     types: [created]
+  workflow_dispatch:
 
 jobs:
 
   build-linux:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       
       - name: Set up Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
         
-      - uses: jiro4989/setup-nim-action@v1.0.2
+      - uses: jiro4989/setup-nim-action@v1
         with:
-          nim-version: '1.0.6'
+          nim-version: '1.6.0'
 
       - name: Install dependencies
         run: |
@@ -39,16 +40,16 @@ jobs:
   build-win32:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
         
-      - uses: jiro4989/setup-nim-action@v1.0.2
+      - uses: jiro4989/setup-nim-action@v1
         with:
-          nim-version: '1.0.6'
+          nim-version: '1.6.0'
 
       - name: Install dependencies
         run: |
@@ -67,15 +68,15 @@ jobs:
   build-macos:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-      - uses: jiro4989/setup-nim-action@v1.0.2
+      - uses: jiro4989/setup-nim-action@v1
         with:
-          nim-version: '1.0.6'
+          nim-version: '1.6.0'
 
       - name: Install dependencies
         run: |
