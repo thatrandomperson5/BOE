@@ -6,5 +6,3 @@ venv/
 **/__pycache__
 **/.mypy_cache
 **/*.pyc
-**/poetry.lock
-**/pyproject.toml
