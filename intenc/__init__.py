@@ -44,7 +44,7 @@ def encode(ints: List[int], etype: str = "ne") -> EncodedBytes:
     else:
         raise IntecKindError(f"Unrecognized encoding type \"{etype}\"")
         
-def decode(data: bytes, length: int, etype: str = "ne") -> list:
+def decode(data: bytes, length: int, etype: str = "ne") -> List[int]:
     obj = EncodedBytes(data, length, etype)
     return obj.decode()
 
