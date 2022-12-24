@@ -32,8 +32,8 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
         run: |
           python setup.py bdist_wheel
-          WHEEL=dist/$(python3 -c 'import pathlib;print([*pathlib.Path("dist").glob("pebaz*")][0].name.replace("linux", "manylinux1"))')
-          mv dist/$(python -c "import pathlib;print([*pathlib.Path('dist').glob('pebaz*')][0].name)") $WHEEL
+          WHEEL=dist/$(python3 -c 'import pathlib;print([*pathlib.Path("dist").glob("intenc*")][0].name.replace("linux", "manylinux1"))')
+          mv dist/$(python -c "import pathlib;print([*pathlib.Path('dist').glob('intenc*')][0].name)") $WHEEL
           ls dist
           twine upload dist/*
 
