@@ -3,52 +3,44 @@
 import std/[strutils, sequtils, parseutils]
 import utils
 
-
-proc encode*(s: openArray[int]): seq[byte] =
-    ## Encode and smash an array of ints into bytes.
-    ## The first byte will be the bit length
-
-    var mlength = 0
-    for i in s:
-        if i > mlength:
-             mlength = i
-    mlength = mlength.binLen + 1
-    var cache = ""
-    for i in s:
-        cache &= toBin(i, mlength)
+proc binToInt(cache: var string): seq[byte] = 
     # Smash and pad
     let rem = cache.len mod 8
     if rem != 0:
         for _ in 1..(8 - rem):
             cache = "0" & cache
-    var bnum: byte
-    
-    result.add mlength.byte
+
+    var bnum: byte   
     for i in countup(0, cache.len-1, 8):
         doAssert parseBin(cache[i..i+7], bnum) == 8
         result.add bnum
 
-proc encode*(s: openArray[int], lo: var int): seq[byte] =
-    ## Same as `encode proc <#encode,openArray[int]>`_ execpt the bit length is stored in `lo`.
-    var mlength = 0
-    for i in s:
-        if i > mlength:
-             mlength = i
+
+proc encode*(s: openArray[int]): seq[byte] =
+    ## Encode and smash an array of ints into bytes.
+    ## The first byte will be the bit length
+    var mlength = findMaxLen(s, true)
     mlength = mlength.binLen + 1
     var cache = ""
     for i in s:
         cache &= toBin(i, mlength)
-    # Smash and pad
-    let rem = cache.len mod 8
-    if rem != 0:
-        for _ in 1..(8 - rem):
-            cache = "0" & cache
-    var bnum: byte
+
     
+    result.add mlength.byte
+    result.add binToInt(cache)
+
+proc encode*(s: openArray[int], lo: var int): seq[byte] =
+    ## Same as `encode proc <#encode,openArray[int]>`_ execpt the bit length is stored in `lo`.
+    
+    var mlength = findMaxLen(s, true)
+    mlength = mlength.binLen + 1
+    var cache = ""
+    for i in s:
+        cache &= toBin(i, mlength)
+
+
     lo = mlength
-    for i in countup(0, cache.len-1, 8):
-         doAssert parseBin(cache[i..i+7], bnum) == 8
-         result.add bnum
+    result.add binToInt(cache)
 
 proc decode*(i: openArray[byte], l = 0): seq[int] = 
     ## Decode and de-smash an array of bytes into a int seq
