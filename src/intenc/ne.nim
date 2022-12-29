@@ -36,7 +36,7 @@ proc encode*(s: openArray[int], lo: var int): seq[byte] =
 proc decode*(i: openArray[byte], l = 0): seq[int] = 
     ## Decode an encoded int seq from an array of bytes.
    
-    # var ri = i.toSeq
+    var ri = i.toSeq
     var rl: int
     # if l == 0:
         # rl = ri[0].int
