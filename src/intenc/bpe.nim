@@ -16,18 +16,7 @@ proc binToInt(cache: var string): seq[byte] =
         result.add bnum
 
 
-proc encode*(s: openArray[int]): seq[byte] =
-    ## Encode and smash an array of ints into bytes.
-    ## The first byte will be the bit length
-    var mlength = findMaxLen(s, true)
-    mlength = mlength.binLen + 1
-    var cache = ""
-    for i in s:
-        cache &= toBin(i, mlength)
 
-    
-    result.add mlength.byte
-    result.add binToInt(cache)
 
 proc encode*(s: openArray[int], lo: var int): seq[byte] =
     ## Same as `encode proc <#encode,openArray[int]>`_ execpt the bit length is stored in `lo`.
@@ -41,6 +30,14 @@ proc encode*(s: openArray[int], lo: var int): seq[byte] =
 
     lo = mlength
     result.add binToInt(cache)
+
+# Temporary removal
+# proc encode*(s: openArray[int]): seq[byte] =
+    # Encode and smash an array of ints into bytes.
+    # The first byte will be the bit length
+    # var tmp: int 
+    # result = s.encode(tmp)
+    # result.insert(tmp, 0)
 
 proc decode*(i: openArray[byte], l = 0): seq[int] = 
     ## Decode and de-smash an array of bytes into a int seq

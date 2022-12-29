@@ -13,14 +13,15 @@ proc convert(s: openArray[int], mlength: int): seq[byte] =
             else:
                 discard b[i..^1].parseBin(tmp)
             result.add tmp
-    
-proc encode*(s: openArray[int]): seq[byte] = 
-    ## Encode an array of integers into an seq of bytes.
-    ## The byte length is stored as the first byte in the seq.
-    var mlength = findMaxLen(s, true)
-    mlength = ceil(mlength.binLen / 8).int
-    result.add mlength.byte
-    result.add s.convert(mlength)
+
+# Temporary removal
+# proc encode*(s: openArray[int]): seq[byte] = 
+    # Encode an array of integers into an seq of bytes.
+    # The byte length is stored as the first byte in the seq.
+    # var mlength = findMaxLen(s, true)
+    # mlength = ceil(mlength.binLen / 8).int
+    # result.add mlength.byte
+    # result.add s.convert(mlength)
 
 
 
