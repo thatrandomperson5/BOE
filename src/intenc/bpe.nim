@@ -43,11 +43,12 @@ proc decode*(i: openArray[byte], l = 0): seq[int] =
     ## Decode and de-smash an array of bytes into a int seq
     var ri = i.toSeq
     var rl: int
-    if l == 0:
-        rl = ri[0].int
-        ri.delete(0)
-    else:
-        rl = l
+    # if l == 0:
+        # rl = ri[0].int
+        # ri.delete(0)
+    # else:
+    rl = l
+
     var binstr = ""
     for x in ri:
         binstr &= x.int.toBin(8)

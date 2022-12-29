@@ -1,4 +1,4 @@
-# This file is only for docs! do not import directly
+# This is the utils file
 
 ## The intenc docs
 ## ================
@@ -41,4 +41,3 @@
 
 from intenc/ne import nil
 from intenc/bpe import nil
-
