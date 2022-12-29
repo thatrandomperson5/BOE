@@ -37,7 +37,7 @@ proc decode*(i: openArray[byte], l = 0): seq[int] =
     ## Decode an encoded int seq from an array of bytes.
    
     # var ri = i.toSeq
-    # var rl: int
+    var rl: int
     # if l == 0:
         # rl = ri[0].int
         # ri.delete(0)
