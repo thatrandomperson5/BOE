@@ -63,3 +63,6 @@ Decodes bytes data, length and type not in object form. Returns a list of usigne
 ```
 57896044618658097711785492504343953926634992332820282019728792003956564819967
 ```
+## TODO
+- [ ] Add signed encoding / decoding (`encodes`, `decodes`)
+- [ ] Add float encoding / decoding (`encodef`, `decodef`)
