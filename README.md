@@ -6,6 +6,23 @@ The two current routes are `ne` and `bpe`. Below is a chart to help you choose.
 |-|-|-|-|-|
 |ne|more stable|less efficient|untested|1.26238e614|
 |bpe|less stable|more efficient|untested|5.78960e76|
+
+**Questions to help you choose:**
+
+Are all your numbers below 255?
+
+**Yes**: Use `bpe`
+
+**No**: continue
+
+Are any of your numbers above `5.78960e76`?
+
+**Yes**: Use `ne`
+
+**No**: Use `bpe`
+
+(If one does not work, open an issue and try the other)
+
 ## Structure
 The output structure contains a length and data. The length determines how much of the output data is used up for each number. The data is the actual numbers in decimal.
 # Nim
