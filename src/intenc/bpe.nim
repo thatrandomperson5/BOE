@@ -1,6 +1,6 @@
 ## Bit precision int/number encoding
     
-import std/[strutils, sequtils, parseutils]
+import std/[strutils, sequtils, parseutils, sugar]
 import utils
 
 proc binToInt(cache: var string): seq[byte] = 
@@ -18,10 +18,10 @@ proc binToInt(cache: var string): seq[byte] =
 
 
 
-proc encode*(s: openArray[int], lo: var int): seq[byte] =
+proc encode*(us: openArray[uint], lo: var int): seq[byte] =
     ## Encode an array of integers into an seq of bytes.
     ## The bit length is stored into `lo`. 
-
+    let s = us.map(a => a.int)
     var mlength = findMaxLen(s, true)
     mlength = mlength.binLen + 1
     var cache = ""
@@ -38,9 +38,9 @@ proc encode*(s: openArray[int], lo: var int): seq[byte] =
     # The first byte will be the bit length
     # var tmp: int 
     # result = s.encode(tmp)
-    # result.insert(tmp, 0)
+    # result.insert(tmp.byte, 0)
 
-proc decode*(i: openArray[byte], l = 0): seq[int] = 
+proc decode*(i: openArray[byte], l = 0): seq[uint] = 
     ## Decode and de-smash an array of bytes into a int seq
     var ri = i.toSeq
     var rl: int
@@ -65,4 +65,4 @@ proc decode*(i: openArray[byte], l = 0): seq[int] =
     for x in countup(0, binstr.len-1, rl):
         let item = binstr[x..x+rl-1]
         doAssert item.parseBin(iitem) == rl
-        result.add iitem
+        result.add iitem.uint

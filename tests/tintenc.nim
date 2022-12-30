@@ -9,9 +9,9 @@ proc toString(bytes: openarray[byte]): string =
     result = newString(bytes.len)
     copyMem(result[0].addr, bytes[0].unsafeAddr, bytes.len)
 
-var test = newSeq[int]()
+var test = newSeq[uint]()
 for _ in 0..100:
-    test.add rand(260)
+    test.add rand(260).uint
 echo "Orginal: ", test
 
 

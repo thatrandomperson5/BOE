@@ -1,6 +1,6 @@
 ## Byte precision int/number encoding
     
-import std/[math, strutils, sequtils, parseutils]
+import std/[math, strutils, sequtils, parseutils, sugar]
 import utils
 
 proc convert(s: openArray[int], mlength: int): seq[byte] =
@@ -25,16 +25,17 @@ proc convert(s: openArray[int], mlength: int): seq[byte] =
 
 
 
-proc encode*(s: openArray[int], lo: var int): seq[byte] = 
+proc encode*(us: openArray[uint], lo: var int): seq[byte] = 
     ## Encode an array of integers into an seq of bytes.
     ## The byte length is stored into `lo`.
+    let s = us.map(a => a.int) # For math it does not except uint
     
     var mlength = findMaxLen(s, true)
     mlength = ceil(mlength.binLen / 8).int
     lo = mlength
     result.add s.convert(mlength)
 
-proc decode*(i: openArray[byte], l = 0): seq[int] = 
+proc decode*(i: openArray[byte], l = 0): seq[uint] = 
     ## Decode an encoded int seq from an array of bytes.
    
     var ri = i.toSeq
@@ -50,4 +51,4 @@ proc decode*(i: openArray[byte], l = 0): seq[int] =
         for x in ri[index..index+rl-1]:
             rstr &= x.int.toBin(8)
         discard rstr.parseBin(tmp)
-        result.add tmp
+        result.add tmp.uint
