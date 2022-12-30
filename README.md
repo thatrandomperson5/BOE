@@ -4,8 +4,8 @@ A library for encoding and decoding integers. It dual supports nim and python.
 The two current routes are `ne` and `bpe`. Below is a chart to help you choose.
 |Type|Stablity|Efficiency|Speed|Max number. [Full](#full-numbers)|
 |-|-|-|-|-|
-|ne|more stable|less efficient|untested|
-|bpe|less stable|more efficient|untested|
+|ne|more stable|less efficient|untested|1.26238e614|
+|bpe|less stable|more efficient|untested|5.78960e76|
 ## Structure
 The output structure contains a length and data. The length determines how much of the output data is used up for each number. The data is the actual numbers in decimal.
 # Nim
