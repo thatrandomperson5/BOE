@@ -19,8 +19,9 @@ proc binToInt(cache: var string): seq[byte] =
 
 
 proc encode*(s: openArray[int], lo: var int): seq[byte] =
-    ## Same as `encode proc <#encode,openArray[int]>`_ execpt the bit length is stored in `lo`.
-    
+    ## Encode an array of integers into an seq of bytes.
+    ## The bit length is stored into `lo`. 
+
     var mlength = findMaxLen(s, true)
     mlength = mlength.binLen + 1
     var cache = ""

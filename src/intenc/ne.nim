@@ -26,7 +26,8 @@ proc convert(s: openArray[int], mlength: int): seq[byte] =
 
 
 proc encode*(s: openArray[int], lo: var int): seq[byte] = 
-    ## Same as `encode proc <#encode,openArray[int]>`_ execpt the byte length is stored in `lo`.
+    ## Encode an array of integers into an seq of bytes.
+    ## The byte length is stored into `lo`.
     
     var mlength = findMaxLen(s, true)
     mlength = ceil(mlength.binLen / 8).int
